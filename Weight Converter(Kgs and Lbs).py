@@ -1,8 +1,18 @@
-weight = int(input("Weight: "))
+
+# static conversion
+CONVERT = 0.45
+
+# check for errors
+try:
+    weight = int(input("Weight: "))
+except ValueError:
+    print("Weight must be an integer!")
+    exit(1) # exit gracefully
+
 unit = input("(K)gs or (L)bs: ")
-if unit.upper() == "K":
-    converted =  weight / 0.45
-    print("Weight in (L)bs "+ str(converted))
+if unit.lower().startswith("k"):
+    converted =  weight / CONVERT
+    print(f"Weight in lbs: {converted}")
 else:
-    converted = weight * 0.45
-    print("Weight in (K)gs "+ str(converted))
+    converted = weight * CONVERT
+    print(f"Weight in kgs: {converted}")
